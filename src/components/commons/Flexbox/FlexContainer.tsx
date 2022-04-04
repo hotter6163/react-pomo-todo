@@ -1,11 +1,12 @@
 import React, { VFC, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 
-import { bodyMargin } from 'constants/index'
+import { sideMargin } from 'constants/index'
+import { JustifyContentValue } from 'types/CssValueTypes'
 
 type Props = {
   children: ReactNode,
-  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around',
+  justifyContent?: JustifyContentValue,
 }
 
 export const FlexContainer: VFC<Props> = ({ children, justifyContent='space-around' }) => {
@@ -19,7 +20,7 @@ export const FlexContainer: VFC<Props> = ({ children, justifyContent='space-arou
 const Wrapper = styled.div<Required<Omit<Props, 'children'>>>`
   display: flex;
   align-items: flex-start;
-  margin: ${bodyMargin};
+  margin: ${sideMargin};
   ${props => 
     css`justify-content: ${props.justifyContent};`
   }

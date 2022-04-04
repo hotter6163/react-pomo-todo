@@ -1,6 +1,11 @@
 import React, { createContext, useState, VFC ,ReactNode } from "react"
 
-export const WindowWidthContext = createContext({})
+type ContextType = {
+  windowWidth: number,
+  setWindowWidth: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const WindowWidthContext = createContext<ContextType>({} as ContextType)
 
 type Props = {
   children: ReactNode,
