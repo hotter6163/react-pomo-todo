@@ -14,7 +14,7 @@ export const Header: VFC = () => {
 }
 
 const WrapperHeaderTab = styled.header`
-  background-color: ${color.deepSkyBlue};
+  background-color: ${color.lightBlue};
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
 `

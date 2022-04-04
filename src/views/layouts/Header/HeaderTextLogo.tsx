@@ -1,7 +1,7 @@
 import React, { VFC } from 'react'
 import styled from 'styled-components'
 
-import { Text } from 'components/index'
+import { WrapperText } from 'components/index'
 import { color } from 'constants/index'
 
 type Proops = {
@@ -10,10 +10,10 @@ type Proops = {
 
 export const HeaderTextLogo: VFC<Proops> = ({ title }) => {
   return (
-    <Wrapper fontSize="l">{title}</Wrapper>
+    <Wrapper fontSize="xl">{title}</Wrapper>
   )
 }
 
-const Wrapper = styled(Text)`
-  color: ${color.darkGray};
+const Wrapper = styled(WrapperText)`
+  color: ${color.gray};
 `

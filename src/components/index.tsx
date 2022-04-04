@@ -1,1 +1,1 @@
-export { Text } from './Text'
+export { Text, Wrapper as WrapperText } from './Text'

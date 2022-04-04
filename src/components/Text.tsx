@@ -16,7 +16,7 @@ export const Text: VFC<Props> = ({ fontSize, children }) => {
   )
 }
 
-const Wrapper = styled.p<Omit<Props, 'children'>>`
+export const Wrapper = styled.p<Omit<Props, 'children'>>`
   ${props =>
     css`font-size: ${fs[props.fontSize]}`
   }
