@@ -2,7 +2,6 @@ import React, { VFC, ReactNode, useContext } from 'react'
 import styled, { css } from 'styled-components'
 
 import { WindowWidthContext } from 'components/providers'
-import { sideMargin } from 'constants/index'
 
 type Props = {
   children: ReactNode,

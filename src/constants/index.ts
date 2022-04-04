@@ -12,4 +12,4 @@ export const fontSize = {
 } as const
 export type FontSizeType = keyof typeof fontSize
 
-export const sideMargin = '10px'
+export const bodySideMargin = 10
