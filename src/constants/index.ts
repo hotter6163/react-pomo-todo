@@ -11,3 +11,5 @@ export const fontSize = {
   xl: '2.5rem',
 } as const
 export type FontSizeType = keyof typeof fontSize
+
+export const bodyMargin = '10px'

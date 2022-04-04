@@ -1,12 +1,12 @@
 import React, { VFC } from 'react'
 import styled, { css } from 'styled-components'
 
-import { FlexContainer } from 'components/index'
+import { FlexContainer } from 'components/commons/index'
 import { color } from 'constants/index'
 
 export const Home: VFC = () => {
   return (
-    <FlexContainer justifyContent='space-between'>
+    <FlexContainer justifyContent='flex-start'>
       <TestDiv width={30}/>
       <TestDiv width={30}/>
     </FlexContainer>

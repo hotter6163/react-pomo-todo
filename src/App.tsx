@@ -1,7 +1,5 @@
 import React, { VFC } from 'react'
-import { Header, Home } from 'views/index'
-
-import { Text } from 'components/index'
+import { Header, Home } from 'components/views/index'
 
 export const App: VFC = () => {
   return (

@@ -1,6 +1,8 @@
 import React, { VFC, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 
+import { bodyMargin } from 'constants/index'
+
 type Props = {
   children: ReactNode,
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around',
@@ -17,8 +19,9 @@ export const FlexContainer: VFC<Props> = ({ children, justifyContent='space-arou
 const Wrapper = styled.div<Required<Omit<Props, 'children'>>>`
   display: flex;
   align-items: flex-start;
-  padding: 1rem;
+  margin: ${bodyMargin};
   ${props => 
     css`justify-content: ${props.justifyContent};`
   }
 `
+
