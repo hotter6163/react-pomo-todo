@@ -1,16 +1,14 @@
-import React, { VFC, ReactNode } from 'react'
+import React, { VFC } from 'react'
 import styled, { css } from 'styled-components'
 
-import { AlineValue } from 'types/CssValueTypes'
-
-type Props = {
-  children: ReactNode,
-  order?: number,
-  alignSelf?: AlineValue,
-}
+import { FlexItemProps as Props } from 'components/commons/Types'
 
 export const FlexItem: VFC<Props> = ({ children }) => {
-  
+  return (
+    <Wrapper>
+      {children}
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`

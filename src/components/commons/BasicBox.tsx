@@ -1,12 +1,8 @@
-import React, { VFC, ReactNode, useContext } from 'react'
+import React, { VFC, useContext } from 'react'
 import styled, { css } from 'styled-components'
 
 import { WindowWidthContext } from 'components/providers'
-
-type Props = {
-  children: ReactNode,
-  width: number,
-}
+import { BasicBoxProps as Props } from 'components/commons/Types'
 
 export const BasicBox: VFC<Props> = ({ children, width }) => {
   return (

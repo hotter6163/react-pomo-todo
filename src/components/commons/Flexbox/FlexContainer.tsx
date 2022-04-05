@@ -1,12 +1,7 @@
-import React, { VFC, ReactNode } from 'react'
+import React, { VFC } from 'react'
 import styled, { css } from 'styled-components'
 
-import { JustifyContentValue } from 'types/CssValueTypes'
-
-type Props = {
-  children: ReactNode,
-  justifyContent?: JustifyContentValue,
-}
+import { FlexContainerProps as Props } from 'components/commons/Types'
 
 export const FlexContainer: VFC<Props> = ({ children, justifyContent='space-around' }) => {
   return (
