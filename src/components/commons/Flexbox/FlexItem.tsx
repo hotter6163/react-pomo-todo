@@ -2,15 +2,16 @@ import React, { VFC } from 'react'
 import styled, { css } from 'styled-components'
 
 import { FlexItemProps as Props } from 'components/commons/Types'
+import { WrappeBasicBox } from "components/commons/index"
 
-export const FlexItem: VFC<Props> = ({ children }) => {
+export const FlexItem: VFC<Props> = ({ children, width }) => {
   return (
-    <Wrapper>
+    <Wrapper width={width}>
       {children}
     </Wrapper>
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(WrappeBasicBox)`
   
 `
