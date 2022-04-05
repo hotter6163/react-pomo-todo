@@ -1,7 +1,7 @@
 import React, { VFC } from 'react'
 import styled from 'styled-components'
 
-import { WrapperText } from 'components/commons/index'
+import { Wrapper as WrapperText } from 'components/commons/Text'
 import { color } from 'constants/index'
 
 type Proops = {
