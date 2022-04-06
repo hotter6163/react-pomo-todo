@@ -1,17 +1,22 @@
 import React, { VFC } from 'react'
 import styled, { css } from 'styled-components'
 
-import { FlexItemProps as Props } from 'components/commons/Types'
-import { Wrapper as WrappeBasicBox } from "components/commons/BasicBox"
+import { FlexItemProps as Props } from 'types/ComponentTypes'
+import { StyledDiv } from 'components/styeled_components/StyledDiv'
 
-export const FlexItem: VFC<Props> = ({ children, width }) => {
+export const FlexItem: VFC<Props> = ({ children, width, backgroundColor, alignSelf, order }) => {
   return (
-    <Wrapper width={width}>
+    <Wrapper backgroundColor={backgroundColor} width={width} alignSelf={alignSelf} order={order}>
       {children}
     </Wrapper>
   )
 }
 
-const Wrapper = styled(WrappeBasicBox)`
-  
+const Wrapper = styled(StyledDiv)<Omit<Props, 'children'>>`
+  ${props => 
+    css`
+      ${props.order && `order: ${props.order};`}
+      ${props.alignSelf && `align-self: ${props.alignSelf};`}
+    `
+  }
 `

@@ -1,19 +1,12 @@
 import React, { VFC } from 'react'
-import styled, { css } from 'styled-components'
 
-import { fontSize as fs } from 'constants/index'
-import { TextProps as Props } from 'components/commons/Types'
+import { TextProps as Props } from 'types/ComponentTypes'
+import { StyledP } from 'components/styeled_components/StyledP'
 
-export const Text: VFC<Props> = ({ fontSize, children }) => {
+export const Text: VFC<Props> = ({ fontSize, children, textAlign }) => {
   return (
-    <Wrapper fontSize={fontSize}>
+    <StyledP fontSize={fontSize} color="black" textAlign={textAlign}>
       {children}
-    </Wrapper>
+    </StyledP>
   )
 }
-
-export const Wrapper = styled.p<Omit<Props, 'children'>>`
-  ${props =>
-    css`font-size: ${fs[props.fontSize]}`
-  }
-`
