@@ -1,8 +1,9 @@
 import React, { VFC } from 'react'
 import styled, { css } from "styled-components"
 
-import { SelectBoxProps } from 'types/ComponentTypes'
-import { color, fontSize } from 'constants/index'
+import { SelectBoxProps } from 'libs/types/ComponentTypes'
+import { color } from 'libs/constants/index'
+import { fontSize } from 'libs/constants/Size'
 
 export const SelectBox: VFC<SelectBoxProps> = ({ handleValue, handleMethod, selectItems, width="50%" }) => {
   const Options = selectItems.map((item) => {

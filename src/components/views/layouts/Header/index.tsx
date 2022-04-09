@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { HeaderTextLogo } from './HeaderTextLogo'
 
-import { color } from 'constants/index'
+import { color } from 'libs/constants/index'
 
 export const Header: VFC = () => {
   return (

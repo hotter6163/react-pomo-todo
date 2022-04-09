@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { color } from 'constants/index'
-import { StyledDivProps } from 'types/ComponentTypes'
+import { color } from 'libs/constants/index'
+import { StyledDivProps } from 'libs/types/ComponentTypes'
 
 export const StyledDiv = styled.div<StyledDivProps>`
   ${props => 

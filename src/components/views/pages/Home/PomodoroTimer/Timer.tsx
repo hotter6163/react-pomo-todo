@@ -1,10 +1,12 @@
 import React, { VFC, useState } from 'react'
 import styled from 'styled-components'
 
-import { TimerProps } from 'types/ComponentTypes'
+import { TimerProps } from 'libs/types/ComponentTypes'
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
+import { StyledButton } from 'components/styeled_components/StyledButton'
 import { divmod } from 'libs/calculation'
-import { fontSize, color } from 'constants/index'
+import { color } from 'libs/constants/index'
+import { fontSize } from 'libs/constants/Size'
 
 export const Timer: VFC<TimerProps> = ({ minite }) => {
   const [time, setTime] = useState<number>(minite * 60)
@@ -20,7 +22,7 @@ export const Timer: VFC<TimerProps> = ({ minite }) => {
       <TimeDisplay>
         {div > 10 ? div.toString() : `0${div}`}:{mod > 10 ? mod.toString() : `0${mod}`}
       </TimeDisplay>
-      <button onClick={decrementTime}>カウントダウン</button>
+      <StyledButton onClick={decrementTime} buttonType="primary" size="l">カウントダウン</StyledButton>
     </StyledDiv>
   )
 }

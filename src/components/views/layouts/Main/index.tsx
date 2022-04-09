@@ -1,7 +1,7 @@
 import React, { VFC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-import { bodySideMargin } from 'constants/index'
+import { bodySideMargin } from 'libs/constants/index'
 
 export const Main: VFC<{ children: ReactNode }> = ({ children }) => {
   return (

@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
 
-import { color, fontSize } from 'constants/index'
-import { StyledPProps } from 'types/ComponentTypes'
+import { color } from 'libs/constants/index'
+import { fontSize } from 'libs/constants/Size'
+import { StyledPProps } from 'libs/types/ComponentTypes'
 
 export const StyledP = styled.p<StyledPProps>`
   ${props => 

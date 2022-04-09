@@ -1,11 +1,13 @@
 import { ReactNode, ChangeEvent } from 'react'
 
-import { JustifyContentType, AlineType, TextAlignType } from 'types/CssValueTypes'
-import { ColorType, FontSizeType } from 'constants/index'
+import { JustifyContentType, AlineType, TextAlignType } from 'libs/types/CssValueTypes'
+import { ColorType } from 'libs/constants/index'
+import { SizeType } from 'libs/constants/Size'
+import { ButtonType } from 'libs/constants/ButtonTypes'
 
 export type StyledPProps = {
   color?: ColorType
-  fontSize?: FontSizeType
+  fontSize?: SizeType
   textAlign?: TextAlignType
 }
 
@@ -16,8 +18,13 @@ export type StyledDivProps = {
   textAlign?: TextAlignType
 }
 
+export type StyledBUttonProps = {
+  size: SizeType
+  buttonType: ButtonType
+}
+
 export type TextProps = {
-  fontSize: FontSizeType
+  fontSize: SizeType
   children: string
   textAlign?: TextAlignType
 }
