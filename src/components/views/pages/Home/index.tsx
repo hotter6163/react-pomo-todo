@@ -6,10 +6,10 @@ export const Home: VFC = () => {
   return (
     <FlexContainer>
       <FlexItem width="30%" backgroundColor="gray">
-        <Text fontSize="l" textAlign="center">コンテンツ1</Text>
+        <Text fontSize="xxl" textAlign="center">コンテンツ1</Text>
       </FlexItem>
       <FlexItem width="70%" backgroundColor="lightBlue">
-        <Text fontSize="l" textAlign="center">コンテンツ1</Text>
+        <Text fontSize="xxl" textAlign="center">コンテンツ2</Text>
       </FlexItem>
     </FlexContainer>
   )

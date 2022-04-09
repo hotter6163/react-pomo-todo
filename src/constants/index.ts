@@ -10,6 +10,7 @@ export const fontSize = {
   m: '1.5rem',
   l: '2rem',
   xl: '2.5rem',
+  xxl: '3rem',
 } as const
 export type FontSizeType = keyof typeof fontSize
 

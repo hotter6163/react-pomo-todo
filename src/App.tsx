@@ -1,4 +1,4 @@
-import React, { VFC, useContext } from 'react'
+import React, { VFC, useContext, useEffect } from 'react'
 
 import { Header, Home, Main } from 'components/views/index'
 import { WindowWidthContext } from 'components/providers/index'
@@ -6,11 +6,16 @@ import { WindowWidthContext } from 'components/providers/index'
 export const App: VFC = () => {
   const { setWindowWidth } = useContext(WindowWidthContext)
   
-  if (setWindowWidth) {
-    window.addEventListener('resize', () => {
-      setWindowWidth(window.innerWidth)
-    })
+  const updateWindowWidth = () => {
+    setWindowWidth(window.innerWidth)
   }
+  
+  useEffect(() => {
+    window.addEventListener('resize', updateWindowWidth)
+    return () => {
+      window.removeEventListener('resize', updateWindowWidth)
+    }
+  }, [])
   
   return (
     <>
