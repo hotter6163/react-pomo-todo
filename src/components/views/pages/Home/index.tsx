@@ -9,7 +9,7 @@ export const Home: VFC = () => {
       <FlexItem width="30%">
         <PomodoroTimer />
       </FlexItem>
-      <FlexItem width="70%" backgroundColor="lightBlue">
+      <FlexItem width="70%" backgroundColor="gray">
         <Text fontSize="xxl" textAlign="center">コンテンツ2</Text>
       </FlexItem>
     </FlexContainer>

@@ -6,12 +6,12 @@ export const color = {
 export type ColorType = keyof typeof color
 
 export const fontSize = {
-  xs: '0.9rem',
+  xs: '0.8rem',
   s: '1rem',
   m: '1.5rem',
   l: '2rem',
   xl: '2.5rem',
-  xxl: '3rem',
+  xxl: '3.5rem',
 } as const
 export type FontSizeType = keyof typeof fontSize
 
