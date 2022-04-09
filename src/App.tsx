@@ -12,9 +12,6 @@ export const App: VFC = () => {
   
   useEffect(() => {
     window.addEventListener('resize', updateWindowWidth)
-    return () => {
-      window.removeEventListener('resize', updateWindowWidth)
-    }
   }, [])
   
   return (
