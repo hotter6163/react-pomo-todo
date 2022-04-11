@@ -1,4 +1,4 @@
-export type BasicColorType = 'lightBlue' | 'gray' | 'black'
+export type BasicColorType = 'lightBlue' | 'gray' | 'black' | 'white'
 export type NamedColorType = 'primary' | 'normal' | 'warning' | 'danger'
 export type ColorType = BasicColorType | NamedColorType
 export type ColorValueType = {

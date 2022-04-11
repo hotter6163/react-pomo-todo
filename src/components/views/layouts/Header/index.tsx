@@ -7,13 +7,13 @@ import { color } from 'libs/constants/index'
 
 export const Header: VFC = () => {
   return (
-    <WrapperHeaderTab>
+    <Wrapper>
       <HeaderTextLogo title='ポモドーロTODO' />
-    </WrapperHeaderTab>
+    </Wrapper>
   )
 }
 
-const WrapperHeaderTab = styled.header`
+const Wrapper = styled.header`
   background-color: ${color.lightBlue};
   width: 100%;
   padding: 1rem;

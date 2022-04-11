@@ -1,31 +1,34 @@
 import { ReactNode, ChangeEvent } from 'react'
 
 import { JustifyContentType, AlineType, TextAlignType } from 'libs/types/cssValueTypes'
-import { ColorType, SizeType } from 'libs/types/commonTypes'
-import { ButtonType } from 'libs/constants/buttonValues'
+import { NamedColorType, BasicColorType, SizeType } from 'libs/types/commonTypes'
 
 export type StyledPProps = {
-  color?: ColorType
+  color?: BasicColorType
   fontSize?: SizeType
   textAlign?: TextAlignType
+  inline?: boolean
 }
 
 export type StyledDivProps = {
   width?: string
   height?: string
-  backgroundColor?: ColorType
+  backgroundColor?: BasicColorType
   textAlign?: TextAlignType
 }
 
-export type StyledButtonProps = {
-  size: SizeType
-  color: ButtonType
+export type ButtonProps = {
+  children: ReactNode
+  color: NamedColorType
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined) => void
+  block?: boolean
 }
 
 export type TextProps = {
   fontSize: SizeType
-  children: string
+  children: ReactNode
   textAlign?: TextAlignType
+  inline?: boolean
 }
 
 export type FlexContainerProps = {
@@ -44,8 +47,4 @@ export type SelectBoxProps = {
   handleMethod: (e: ChangeEvent<HTMLSelectElement>) => void
   selectItems: { id: string, value: string}[]
   width?: string
-}
-
-export type TimerProps = {
-  minite: number
 }

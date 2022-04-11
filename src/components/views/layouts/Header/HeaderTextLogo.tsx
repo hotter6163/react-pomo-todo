@@ -8,6 +8,6 @@ type Proops = {
 
 export const HeaderTextLogo: VFC<Proops> = ({ title }) => {
   return (
-    <StyledP fontSize="xl" color="gray">{title}</StyledP>
+    <StyledP fontSize="l" color="gray">{title}</StyledP>
   )
 }

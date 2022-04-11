@@ -1,7 +1,7 @@
 import React, { VFC } from 'react'
 import styled, { css } from 'styled-components'
 
-import { FlexContainerProps as Props } from 'types/ComponentTypes'
+import { FlexContainerProps as Props } from 'libs/types/componentTypes'
 
 export const FlexContainer: VFC<Props> = ({ children, justifyContent='space-around' }) => {
   return (

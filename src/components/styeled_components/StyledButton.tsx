@@ -1,13 +1,15 @@
 import styled, { css } from 'styled-components'
 
-import { fontSize } from 'libs/constants/size'
+import { fontSize, color } from 'libs/constants/index'
 import { StyledButtonProps } from 'libs/types/componentTypes'
-import { } from 'libs/constants/buttonValues'
+import { TextAlignType } from 'libs/types/cssValueTypes'
 
 export const StyledButton = styled.button<StyledButtonProps>`
-  ${({ color, size }) => 
-    css`
-      font-size: ${fontSize[size]};
-    `
+  ${props => { 
+    return css`
+      font-size: ${fontSize[props.size]};
+      background-color: ${color[props.color]};
+      
+    `}
   }
 `

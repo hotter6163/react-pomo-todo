@@ -8,4 +8,5 @@ export const color: ColorValueType = {
   normal: "#ffffff",
   warning: "#ffc107",
   danger: "#dc3545",
+  white: "#ffffff",
 } 

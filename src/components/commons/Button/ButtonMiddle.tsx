@@ -1,0 +1,33 @@
+import React, { VFC } from 'react'
+import styled, { css } from 'styled-components'
+
+import { ButtonProps } from 'libs/types/componentTypes'
+import { color, fontSize } from 'libs/constants/index'
+
+export const ButtonMiddle: VFC<ButtonProps> = ({ color, children, onClick, block=false }) => {
+  return (
+    <Wrapper color={color} block={block} onClick={onClick}>
+      {children}
+    </Wrapper>
+  )
+} 
+
+const Wrapper = styled.button<Omit<ButtonProps, 'children' | 'onClick'>>`
+  font-size: ${fontSize.m};
+  width: 12rem;
+  height: 2rem;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  ${props => 
+   css`
+    background-color: ${color[props.color]};
+    border: 1px ${props.color === 'normal' ? color.black :color[props.color]} solid;
+    ${props.color !== "normal" && css`color: ${color.white};`}
+    ${props.block && css`
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    `}
+  `}
+`

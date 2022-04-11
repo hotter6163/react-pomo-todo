@@ -23,9 +23,9 @@ const Wrapper = styled.select<{ width: string }>`
   ${props => 
     css`width: ${props.width};`
   }
-  border: 3px ${color.black} double;
+  border: 3px ${color.black} solid;
   border-radius: 10px;
   padding: 5px 30px 5px 10px;
-  font-size: ${fontSize.xs};
+  font-size: ${fontSize.s};
   margin-bottom: 20px;
 `

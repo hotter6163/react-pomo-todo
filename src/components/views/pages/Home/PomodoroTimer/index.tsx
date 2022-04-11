@@ -2,7 +2,7 @@ import React, { VFC, useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
 
 import { StyledDiv } from "components/styeled_components/StyledDiv"
-import { StyledDivProps } from "libs/types/ComponentTypes"
+import { StyledDivProps } from "libs/types/componentTypes"
 import { SelectBox } from 'components/commons/index'
 import { Timer } from './Timer'
 
