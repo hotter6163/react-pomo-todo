@@ -17,8 +17,7 @@ const Wrapper = styled.button<Omit<ButtonProps, 'children' | 'onClick'>>`
   width: 12rem;
   height: 2.5rem;
   border-radius: 1.25rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
   ${props => 
    css`
     background-color: ${color[props.color]};

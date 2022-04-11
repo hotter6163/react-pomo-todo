@@ -5,6 +5,7 @@ import { StyledDiv } from "components/styeled_components/StyledDiv"
 import { StyledDivProps } from "libs/types/componentTypes"
 import { SelectBox } from 'components/commons/index'
 import { PomodoroTimer } from './PomodoroTimer/index'
+import { PomodoroTimerProvider } from 'components/providers/index'
 
 const selectItems = [
   {id: "none", value: "--------"},
@@ -25,7 +26,9 @@ export const TimerZone: VFC = () => {
   return (
     <Wrapper textAlign="center">
       <SelectBox handleValue={selected} handleMethod={handleChange} selectItems={selectItems} width="80%" />
-      <PomodoroTimer />
+      <PomodoroTimerProvider>
+        <PomodoroTimer />
+      </PomodoroTimerProvider>
     </Wrapper>
   )
 }

@@ -7,7 +7,8 @@ import { StyledDiv } from 'components/styeled_components/StyledDiv'
 export const ControlButtons: VFC = () => {
   return (
     <Wrapper textAlign="center">
-      <ButtonMiddle color="primary">STARE</ButtonMiddle>
+      <ButtonMiddle color="primary" block={true}>STARE</ButtonMiddle>
+      <ButtonMiddle color="normal" block={true}>STARE</ButtonMiddle>
     </Wrapper>
   )
 }

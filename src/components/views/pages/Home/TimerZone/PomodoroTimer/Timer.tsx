@@ -1,35 +1,24 @@
-import React, { VFC, useState } from 'react'
+import React, { VFC, useContext } from 'react'
 import styled from 'styled-components'
 
-import { StyledDiv } from 'components/styeled_components/StyledDiv'
-import { Text, ButtonMiddle } from 'components/commons/index'
+import { Text } from 'components/commons/index'
 import { divmod } from 'libs/functions/calculation'
-import { color } from 'libs/constants/index'
-import { fontSize } from 'libs/constants/size'
+import { color, fontSize } from 'libs/constants/index'
+import { TimeContext } from 'components/providers/index'
 
-export type Props = {
-  minite: number
-}
-
-export const Timer: VFC<Props> = ({ minite }) => {
-  const [time, setTime] = useState<number>(minite * 60)
+export const Timer: VFC = React.memo(() => {
+  const{ time }  = useContext(TimeContext)
   
   const { div, mod } = divmod(time, 60)
   
-  const decrementTime = () => {
-    setTime(pre => pre -1)
-  }
-  
-  console.log('レンダリング')
-  
   return (
     <TimeDisplay>
-      <Text fontSize='xl' inline={true}>{div > 10 ? div.toString() : `0${div}`}</Text>
+      <Text fontSize='xl' inline={true}>{div >= 10 ? div.toString() : `0${div}`}</Text>
       <Text fontSize='xl' inline={true}>:</Text>
-      <Text fontSize='xl' inline={true}>{mod > 10 ? mod.toString() : `0${mod}`}</Text>
+      <Text fontSize='xl' inline={true}>{mod >= 10 ? mod.toString() : `0${mod}`}</Text>
     </TimeDisplay>
   )
-}
+})
 
 const TimeDisplay = styled.div`
   font-size: ${fontSize.xl};
