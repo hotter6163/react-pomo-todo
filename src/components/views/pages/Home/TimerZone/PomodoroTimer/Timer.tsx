@@ -23,14 +23,11 @@ export const Timer: VFC<Props> = ({ minite }) => {
   console.log('レンダリング')
   
   return (
-    <StyledDiv textAlign="center">
-      <TimeDisplay>
-        <Text fontSize='xl' inline={true}>{div > 10 ? div.toString() : `0${div}`}</Text>
-        <Text fontSize='xl' inline={true}>:</Text>
-        <Text fontSize='xl' inline={true}>{mod > 10 ? mod.toString() : `0${mod}`}</Text>
-      </TimeDisplay>
-      <ButtonMiddle color="primary" block={true}>center</ButtonMiddle>
-    </StyledDiv>
+    <TimeDisplay>
+      <Text fontSize='xl' inline={true}>{div > 10 ? div.toString() : `0${div}`}</Text>
+      <Text fontSize='xl' inline={true}>:</Text>
+      <Text fontSize='xl' inline={true}>{mod > 10 ? mod.toString() : `0${mod}`}</Text>
+    </TimeDisplay>
   )
 }
 
@@ -39,6 +36,5 @@ const TimeDisplay = styled.div`
   border: 5px ${color.black} ridge;
   width: 20rem;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 1rem;
 `

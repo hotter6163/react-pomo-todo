@@ -1,13 +1,13 @@
 import React, { VFC } from 'react'
 
 import { FlexContainer, FlexItem, Text } from 'components/commons/index'
-import { PomodoroTimer } from "./PomodoroTimer/index"
+import { TimerZone } from "./TimerZone/index"
 
 export const Home: VFC = () => {
   return (
     <FlexContainer>
       <FlexItem width="30%">
-        <PomodoroTimer />
+        <TimerZone />
       </FlexItem>
       <FlexItem width="70%" backgroundColor="gray">
         <Text fontSize="xl" textAlign="center">コンテンツ2</Text>
