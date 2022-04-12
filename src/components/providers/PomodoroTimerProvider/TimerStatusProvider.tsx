@@ -11,7 +11,7 @@ export const TimerStatusContext = createContext<ContextType>({} as ContextType)
 
 export const TimerStatusProveider: VFC<{ children: ReactNode }> = React.memo(({ children }) => {
   const [timerStatus, setTimerStatus] = useState<TimerStatusType>('executable')
-  console.log(`render TimerStatusProveider status:${timerStatus}`)
+  console.log(`render TimerStatusProvider status: ${timerStatus}`)
   
   const obj = { timerStatus, setTimerStatus }
   

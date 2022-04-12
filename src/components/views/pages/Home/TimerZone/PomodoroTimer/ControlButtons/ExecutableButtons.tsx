@@ -3,15 +3,15 @@ import React, { VFC, useContext }  from 'react'
 import { ButtonMiddle } from 'components/commons/index'
 import { TimerStatusContext } from 'components/providers/index'
 
-export const ExecutableButton: VFC = () => {
+export const ExecutableButtons: VFC = () => {
   const { setTimerStatus } = useContext(TimerStatusContext)
   
-  const onClick = () => {
+  const startAction = () => {
     setTimerStatus('execution')
   }
   
   return (
-    <ButtonMiddle color='primary' block={true} onClick={onClick}>
+    <ButtonMiddle color='primary' block={true} onClick={startAction}>
       スタート
     </ButtonMiddle>
   )

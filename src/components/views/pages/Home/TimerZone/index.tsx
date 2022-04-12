@@ -17,6 +17,7 @@ const selectItems = [
 
 
 export const TimerZone: VFC = () => {
+  console.log('render TimerZone')
   const [selected, setSelected] = useState<string>(selectItems[1].value)
   
   const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
