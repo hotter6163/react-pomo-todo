@@ -1,7 +1,8 @@
 import React, { VFC } from 'react'
 
-import { FlexContainer, FlexItem, Text } from 'components/commons/index'
+import { FlexContainer, FlexItem } from 'components/commons/index'
 import { TimerZone } from "./TimerZone/index"
+import { TodoList } from './TodoList/index'
 
 export const Home: VFC = () => {
   console.log('render Home')
@@ -11,8 +12,8 @@ export const Home: VFC = () => {
       <FlexItem width="30%">
         <TimerZone />
       </FlexItem>
-      <FlexItem width="70%" backgroundColor="gray">
-        <Text fontSize="xl" textAlign="center">コンテンツ2</Text>
+      <FlexItem width="70%">
+        <TodoList />
       </FlexItem>
     </FlexContainer>
   )
