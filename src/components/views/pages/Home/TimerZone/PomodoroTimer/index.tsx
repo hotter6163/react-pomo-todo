@@ -30,9 +30,9 @@ const pomodoroTime: PomodoroTimeType = {
 }
 
 export const PomodoroTimer: VFC = React.memo(() => {
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | undefined>(undefined) 
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>(undefined) 
-  const [executeNum, setExecuteNum] = useState<number>(-1)
+  const [timeoutId, setTimeoutId] = useState<number | undefined>(undefined) 
+  const [intervalId, setIntervalId] = useState<number | undefined>(undefined) 
+  const [executeNum, setExecuteNum] = useState<number>(0)
   
   const { timerStatus, setTimerStatus } = useContext(TimerStatusContext)
   const { time, setTime } = useContext(TimeContext)
@@ -49,15 +49,31 @@ export const PomodoroTimer: VFC = React.memo(() => {
     setTime(pomodoroTime[pomodoreStatus])
   }
   
+  const timeoutMethod = (): void => {
+    console.log('call timeoutMethod')
+    if (timeoutId) clearTimeout(timeoutId)
+    if (intervalId) clearInterval(intervalId)
+    setTimeoutId(undefined)
+    setIntervalId(undefined)
+    setTimerStatus('executable')
+  }
+  
+  const intervalMethod = (): void => {
+    setTime((pre) => pre - 1)
+  }
+  
   const toExecution = () => {
-    setTimeoutId(() => setTimeout(() => {
-      if (timeoutId) clearTimeout(timeoutId)
-      if (intervalId) clearInterval(intervalId)
-      setTimeoutId(undefined)
-      setIntervalId(undefined)
-      setTimerStatus('executable')
-    }, time))
-    setIntervalId(() => setInterval(() => setTime((pre) => pre - 1), 1000))
+    console.log(`time: ${time}, type: ${typeof time}`)
+    const resultTimeout: number = window.setTimeout(timeoutMethod, 10000)
+    setTimeoutId((pre) => {
+      console.log(pre)
+      console.log(resultTimeout)
+      return resultTimeout
+    })
+    console.log(timeoutId)
+    
+    const resultInterval: number = window.setInterval(intervalMethod, 1000)
+    setIntervalId(resultInterval)
   }
   
   const toWaiting = () => {
@@ -71,16 +87,21 @@ export const PomodoroTimer: VFC = React.memo(() => {
   const effectFuntion = () => {
     switch (timerStatus) {
       case 'executable':
+        console.log('effectFuntion change executable')
         toExecutable()
         break
       case 'execution':
+        console.log('effectFuntion change execution')
         toExecution()
+        console.log(timeoutId)
         break
       case 'waiting':
+        console.log('effectFuntion change waiting')
         toWaiting()
         break
     }
     return () => {
+      console.log('unmount PomodoroTimer')
       if (timeoutId) clearTimeout(timeoutId)
       if (intervalId) clearInterval(intervalId)
     }

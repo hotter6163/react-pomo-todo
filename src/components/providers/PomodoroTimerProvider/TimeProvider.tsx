@@ -11,8 +11,9 @@ type Props = {
 
 export const TimeContext = createContext<ContextType>({} as ContextType)
 
-export const TimeProveider: VFC<Props> = ({ children }) => {
+export const TimeProveider: VFC<Props> = React.memo(({ children }) => {
   const [time, setTime] = useState<number>(0)
+  console.log(`render TimeProveider time: ${time}`)
   
   const obj = { time, setTime } 
   
@@ -21,4 +22,4 @@ export const TimeProveider: VFC<Props> = ({ children }) => {
       {children}
     </TimeContext.Provider>
   )
-}
+})

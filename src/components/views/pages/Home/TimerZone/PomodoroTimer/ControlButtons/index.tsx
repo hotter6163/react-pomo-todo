@@ -1,14 +1,17 @@
-import React, { VFC } from 'react'
+import React, { VFC, useContext } from 'react'
 import styled from 'styled-components'
 
-import { ButtonMiddle } from 'components/commons/index'
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
+import { TimerStatusContext } from 'components/providers/index'
+
+import { ExecutableButton } from './ExecutableButton'
 
 export const ControlButtons: VFC = () => {
+  const { timerStatus } = useContext(TimerStatusContext)
+  
   return (
     <Wrapper textAlign="center">
-      <ButtonMiddle color="primary" block={true}>STARE</ButtonMiddle>
-      <ButtonMiddle color="normal" block={true}>STARE</ButtonMiddle>
+      {timerStatus === 'executable' && (<ExecutableButton />)}
     </Wrapper>
   )
 }

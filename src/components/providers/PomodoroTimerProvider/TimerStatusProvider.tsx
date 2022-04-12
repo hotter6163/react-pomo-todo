@@ -9,8 +9,9 @@ type ContextType = {
 
 export const TimerStatusContext = createContext<ContextType>({} as ContextType)
 
-export const TimerStatusProveider: VFC<{ children: ReactNode }> = ({ children }) => {
+export const TimerStatusProveider: VFC<{ children: ReactNode }> = React.memo(({ children }) => {
   const [timerStatus, setTimerStatus] = useState<TimerStatusType>('executable')
+  console.log(`render TimerStatusProveider status:${timerStatus}`)
   
   const obj = { timerStatus, setTimerStatus }
   
@@ -19,4 +20,4 @@ export const TimerStatusProveider: VFC<{ children: ReactNode }> = ({ children })
       {children}
     </TimerStatusContext.Provider>
   )
-}
+})
