@@ -2,7 +2,7 @@ import React, { VFC, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
-import { TimerStatusContext, PomodoroConstantsContext, TimeContext } from 'components/providers/index'
+import { TimerStatusContext, PomodoroConstantsContext, SetTimeContext } from 'components/providers/index'
 
 import { ExecutableButtons } from './ExecutableButtons'
 import { ExecutionButtons } from './ExecutionButtons'
@@ -10,7 +10,7 @@ import { WaitingButtons } from './WaitingButtons'
 
 export const ControlButtons: VFC = React.memo(() => {
   console.log('render ControlButtons')
-  const { setTime } = useContext(TimeContext)
+  const setTime = useContext(SetTimeContext)
   const { timerStatus } = useContext(TimerStatusContext)
   const { pomodoroTime } = useContext(PomodoroConstantsContext)
   

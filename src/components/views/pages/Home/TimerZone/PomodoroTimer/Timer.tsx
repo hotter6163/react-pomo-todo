@@ -8,7 +8,7 @@ import { TimeContext } from 'components/providers/index'
 
 export const Timer: VFC = React.memo(() => {
   console.log('render Timer')
-  const{ time }  = useContext(TimeContext)
+  const time = useContext(TimeContext)
   
   const { div, mod } = divmod(time, 60)
   
