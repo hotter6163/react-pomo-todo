@@ -9,7 +9,7 @@ export const Home: VFC = () => {
   
   return (
     <FlexContainer>
-      <FlexItem width="30%">
+      <FlexItem width="30%" alignSelf="center">
         <TimerZone />
       </FlexItem>
       <FlexItem width="70%">

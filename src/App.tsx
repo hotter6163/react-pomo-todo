@@ -1,4 +1,4 @@
-import React, { VFC, useContext, useEffect } from 'react'
+import React, { VFC } from 'react'
 
 import { Header, Home, Main } from 'components/views/index'
 

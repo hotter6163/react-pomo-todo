@@ -1,10 +1,10 @@
 import React, { VFC, useContext }  from 'react'
 
 import { ButtonMiddle } from 'components/commons/index'
-import { TimerStatusContext } from 'components/providers/index'
+import { SetMethodsContext } from 'components/providers/index'
 
 export const ExecutableButtons: VFC = () => {
-  const { setTimerStatus } = useContext(TimerStatusContext)
+  const { setTimerStatus } = useContext(SetMethodsContext)
   
   const startAction = () => {
     setTimerStatus('execution')

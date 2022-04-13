@@ -2,7 +2,7 @@ import React, { VFC, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
-import { TimerStatusContext, PomodoroConstantsContext, SetTimeContext } from 'components/providers/index'
+import { TimerStatusContext, SetMethodsContext, PomodoroConfigContext } from 'components/providers/index'
 
 import { ExecutableButtons } from './ExecutableButtons'
 import { ExecutionButtons } from './ExecutionButtons'
@@ -10,14 +10,14 @@ import { WaitingButtons } from './WaitingButtons'
 
 export const ControlButtons: VFC = React.memo(() => {
   console.log('render ControlButtons')
-  const setTime = useContext(SetTimeContext)
-  const { timerStatus } = useContext(TimerStatusContext)
-  const { pomodoroTime } = useContext(PomodoroConstantsContext)
+  const { setTime }  = useContext(SetMethodsContext)
+  const timerStatus = useContext(TimerStatusContext)
+  const pomodoroConfig = useContext(PomodoroConfigContext)
   
   useEffect(() => {
-    setTime(pomodoroTime.motion)
+    setTime(pomodoroConfig.time('motion'))
     console.log('useEffect')
-  }, [pomodoroTime.motion, setTime])
+  }, [pomodoroConfig, setTime])
   
   return (
     <Wrapper textAlign="center">

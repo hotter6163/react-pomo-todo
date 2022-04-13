@@ -1,9 +1,6 @@
 import React, { VFC } from 'react'
 import styled from 'styled-components'
 
-import { StyledDiv } from 'components/styeled_components/StyledDiv'
-import { color } from 'libs/constants/index'
-
 export const TodoList: VFC = () => {
   return (
     <Wrapper>
