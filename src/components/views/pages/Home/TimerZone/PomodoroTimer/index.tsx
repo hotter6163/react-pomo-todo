@@ -6,8 +6,6 @@ import { ControlButtons } from './ControlButtons/index'
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
 
 export const PomodoroTimer: VFC = React.memo(() => {
-  console.log('render Pomodoro')
-  
   return (
     <Wrapper>
       <Timer />

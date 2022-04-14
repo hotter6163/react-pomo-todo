@@ -1,29 +1,35 @@
-import React, { VFC, useContext, useEffect } from 'react'
+import React, { VFC, useContext } from 'react'
 import styled from 'styled-components'
 
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
-import { TimerStatusContext, SetMethodsContext, PomodoroConfigContext } from 'components/providers/index'
+import { TimerStatusContext, SetMethodsContext } from 'components/providers/index'
 
 import { ExecutableButtons } from './ExecutableButtons'
 import { ExecutionButtons } from './ExecutionButtons'
 import { WaitingButtons } from './WaitingButtons'
 
 export const ControlButtons: VFC = React.memo(() => {
-  console.log('render ControlButtons')
-  const { setTime }  = useContext(SetMethodsContext)
+  const { setTimerStatus }  = useContext(SetMethodsContext)
   const timerStatus = useContext(TimerStatusContext)
-  const pomodoroConfig = useContext(PomodoroConfigContext)
   
-  useEffect(() => {
-    setTime(pomodoroConfig.time('motion'))
-    console.log('useEffect')
-  }, [pomodoroConfig, setTime])
+  const startAction = () => {
+    setTimerStatus('execution')
+  }
+  
+  const pauseAction = () => {
+    setTimerStatus('waiting')
+  }
+  
+  const stopAction = () => {
+    if (!window.confirm('ポモドーロタイマーを停止しますか？')) return
+    setTimerStatus('executable')
+  }
   
   return (
     <Wrapper textAlign="center">
-      {timerStatus === 'executable' && (<ExecutableButtons  />)}
-      {timerStatus === 'execution' && (<ExecutionButtons />)}
-      {timerStatus === 'waiting' && (<WaitingButtons />)}
+      {timerStatus === 'executable' && (<ExecutableButtons startAction={startAction} />)}
+      {timerStatus === 'execution' && (<ExecutionButtons pauseAction={pauseAction} />)}
+      {timerStatus === 'waiting' && (<WaitingButtons startAction={startAction} stopAction={stopAction} />)}
     </Wrapper>
   )
 })

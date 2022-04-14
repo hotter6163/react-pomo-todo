@@ -7,7 +7,6 @@ import { color, fontSize } from 'libs/constants/index'
 import { TimeContext } from 'components/providers/index'
 
 export const Timer: VFC = React.memo(() => {
-  console.log('render Timer')
   const time = useContext(TimeContext)
   
   const { div, mod } = divmod(time, 60)

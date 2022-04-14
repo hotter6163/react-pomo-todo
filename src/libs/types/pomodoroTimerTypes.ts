@@ -11,12 +11,12 @@ export type TimerStatusType = 'executable' | 'execution' | 'waiting'
 
 export type TimerType = {
   timeoutId: number | undefined
-  intevalId: number | undefined
+  intervalId: number | undefined
 }
 
 export type SetMethodsType = {
   setPomodoroConfig: SetValueType<PomodoroConfig>
   setTime: SetValueType<number>
-  setTimer: SetValueType<TimerType>
+  setTimerIds: SetValueType<TimerType>
   setTimerStatus: SetValueType<TimerStatusType>
 }

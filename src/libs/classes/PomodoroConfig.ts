@@ -30,8 +30,22 @@ export class PomodoroConfig {
     return cycle[this.executeNum % cycle.length]
   }
   
-  time(status: PomodoroStatusType): number {
-    return this.pomodoroTime[status]
+  setTime(): number {
+    let result
+    switch (this.nowStatus()) {
+      case 'motion':
+        result = this.pomodoroTime.motion
+        break
+      case 'rest':
+        result = this.pomodoroTime.rest
+        break
+      case 'longRest':
+        result = this.pomodoroTime.longRest
+        break
+      default:
+        throw new Error(`${this.nowStatus()}は不適切な値です`)
+    }
+    return result
   }
   
   addExecuteNum(): void {

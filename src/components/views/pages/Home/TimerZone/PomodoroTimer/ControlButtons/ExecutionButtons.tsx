@@ -1,15 +1,12 @@
-import React, { VFC, useContext }  from 'react'
+import React, { VFC }  from 'react'
 
 import { ButtonMiddle } from 'components/commons/index'
-import { SetMethodsContext } from 'components/providers/index'
 
-export const ExecutionButtons: VFC = () => {
-  const { setTimerStatus } = useContext(SetMethodsContext)
-  
-  const pauseAction = () => {
-    setTimerStatus('waiting')
-  }
-  
+type Props = {
+  pauseAction: () => void
+}
+
+export const ExecutionButtons: VFC<Props> = ({ pauseAction }) => {
   return (
     <ButtonMiddle color='normal' block={true} onClick={pauseAction}>
       一時停止

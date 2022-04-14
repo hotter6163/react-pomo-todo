@@ -1,15 +1,12 @@
-import React, { VFC, useContext }  from 'react'
+import React, { VFC }  from 'react'
 
 import { ButtonMiddle } from 'components/commons/index'
-import { SetMethodsContext } from 'components/providers/index'
 
-export const ExecutableButtons: VFC = () => {
-  const { setTimerStatus } = useContext(SetMethodsContext)
-  
-  const startAction = () => {
-    setTimerStatus('execution')
-  }
-  
+type Props = {
+  startAction: () => void
+}
+
+export const ExecutableButtons: VFC<Props> = ({ startAction }) => {
   return (
     <ButtonMiddle color='primary' block={true} onClick={startAction}>
       スタート
