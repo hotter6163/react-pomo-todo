@@ -7,7 +7,7 @@ export class PomodoroConfig {
     longRest: 15 * 60
   }
   private readonly cycleNum: number = 4
-  count: number
+  private count: number
   
   constructor() {
     this.count = 0

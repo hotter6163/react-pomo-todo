@@ -17,6 +17,5 @@ export type TimerType = {
 export type SetMethodsType = {
   setPomodoroConfig: SetValueType<PomodoroConfig>
   setTime: SetValueType<number>
-  setTimerIds: SetValueType<TimerType>
   setTimerStatus: SetValueType<TimerStatusType>
 }
