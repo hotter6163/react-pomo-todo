@@ -12,7 +12,7 @@ export const SetMethodsContext = createContext<SetMethodsType>({} as SetMethodsT
 
 export const PomodoroTimerProvider: VFC<{ children: ReactNode }> = React.memo(({ children }) => {
   const [pomodoroConfig, setPomodoroConfig] = useState<PomodoroConfig>(new PomodoroConfig())
-  const [time, setTime] = useState<number>(pomodoroConfig.setTime())
+  const [time, setTime] = useState<number>(0)
   const [timerIds, setTimerIds] = useState<TimerType>({ intervalId: undefined, timeoutId: undefined })
   const [timerStatus, setTimerStatus] = useState<TimerStatusType>('executable')
   const setMethods: SetMethodsType = {

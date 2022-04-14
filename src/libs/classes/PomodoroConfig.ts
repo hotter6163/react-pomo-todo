@@ -2,15 +2,15 @@ import { PomodoroStatusType, PomodoroTimeType} from 'libs/types/pomodoroTimerTyp
 
 export class PomodoroConfig {
   private readonly pomodoroTime: PomodoroTimeType = {
-    motion: 10,
-    rest: 3,
-    longRest: 5
+    motion: 25 * 60,
+    rest: 5 * 60,
+    longRest: 15 * 60
   }
   private readonly cycleNum: number = 4
-  private executeNum: number
+  count: number
   
   constructor() {
-    this.executeNum = 0
+    this.count = 0
   }
   
   cycle(): PomodoroStatusType[] {
@@ -27,7 +27,7 @@ export class PomodoroConfig {
   
   nowStatus(): PomodoroStatusType {
     const cycle = this.cycle()
-    return cycle[this.executeNum % cycle.length]
+    return cycle[this.count % cycle.length]
   }
   
   setTime(): number {
@@ -48,12 +48,12 @@ export class PomodoroConfig {
     return result
   }
   
-  addExecuteNum(): void {
-    this.executeNum += 1
+  addCount(): void {
+    this.count += 1
   }
   
   reset(): void {
-    this.executeNum = 0
+    this.count = 0
   }
 }
 

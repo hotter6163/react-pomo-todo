@@ -14,7 +14,7 @@ export const ButtonMiddle: VFC<ButtonProps> = ({ color, children, onClick, block
 
 const Wrapper = styled.button<Omit<ButtonProps, 'children' | 'onClick'>>`
   font-size: ${fontSize.m};
-  width: 12rem;
+  width: 15rem;
   height: 2.5rem;
   border-radius: 1.25rem;
   margin: 0.5rem;
