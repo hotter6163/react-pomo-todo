@@ -3,3 +3,4 @@ export { PomodoroTimerProvider, SetMethodsContext } from './PomodoroTimerProvide
 export { TimeContext } from './PomodoroTimerProvider/TimeContext'
 export { PomodoroConfigContext } from './PomodoroTimerProvider/PomodoroConfigContext'
 export { TimerStatusContext } from './PomodoroTimerProvider/TimerStatusContext'
+export { TasksContext, TasksProvider } from './TodoListProvider'

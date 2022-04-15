@@ -1,13 +1,16 @@
 import React, { VFC } from 'react'
 import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
 
 import { Task } from './Task'
 import { TaskType } from 'libs/types/todoListTypes'
 
 export const TodoList: VFC = () => {
   const task: TaskType = {
-    value: 'hoge',
-    runTime: 1.5 * 60 * 60
+    id: uuid(),
+    name: 'hoge',
+    runTime: 1.5 * 60 * 60,
+    parent: undefined
   }
   
   return (
