@@ -36,7 +36,7 @@ export type FlexContainerProps = {
   justifyContent?: JustifyContentType
 }
 
-export type FlexItemProps = Omit<StyledDivProps, 'height' | 'textAlign'> & {
+export type FlexItemProps = Omit<StyledDivProps, 'height'> & {
   order?: number
   alignSelf?: AlineType
   children: ReactNode

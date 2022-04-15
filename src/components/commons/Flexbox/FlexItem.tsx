@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components'
 import { FlexItemProps as Props } from 'libs/types/componentTypes'
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
 
-export const FlexItem: VFC<Props> = ({ children, width, backgroundColor, alignSelf, order }) => {
+export const FlexItem: VFC<Props> = ({ children, width, backgroundColor, alignSelf, order, textAlign }) => {
   return (
-    <Wrapper backgroundColor={backgroundColor} width={width} alignSelf={alignSelf} order={order}>
+    <Wrapper backgroundColor={backgroundColor} width={width} alignSelf={alignSelf} order={order} textAlign={textAlign}>
       {children}
     </Wrapper>
   )
