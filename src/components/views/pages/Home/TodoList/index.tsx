@@ -1,22 +1,22 @@
-import React, { VFC } from 'react'
+import React, { VFC, useContext } from 'react'
 import styled from 'styled-components'
-import { v4 as uuid } from 'uuid'
 
 import { Task } from './Task'
-import { TaskType } from 'libs/types/todoListTypes'
+import { TasksContext } from 'components/providers/index'
 
 export const TodoList: VFC = () => {
-  const task: TaskType = {
-    id: uuid(),
-    name: 'hoge',
-    runTime: 1.5 * 60 * 60,
-    parent: undefined
-  }
+  const tasks = useContext(TasksContext)
+  
+  const tasksTSX = tasks.parents().map((task) => {
+    return (
+      <Task key={task.id} task={task} />
+    )
+  })
   
   return (
     <Wrapper>
       <ListArea>
-        <Task task={task} />
+        {tasksTSX}
       </ListArea>
     </Wrapper>
   )

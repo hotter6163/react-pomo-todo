@@ -1,16 +1,25 @@
-import React, { VFC } from 'react'
+import React, { VFC, useContext } from 'react'
 import styled from 'styled-components'
 
 import { TaskType } from 'libs/types/todoListTypes'
 import { Text, FlexContainer, FlexItem } from 'components/commons/index'
 import { color } from 'libs/constants/index'
 import { Control } from './Control'
+import { TasksContext } from 'components/providers/index'
 
 type Props = {
   task: TaskType
 }
 
-export const Task: VFC<Props> = ({ task }) => {
+export const Task: VFC<Props> = React.memo(({ task }) => {
+  const tasks = useContext(TasksContext)
+  
+  const childrenTSX = tasks.children(task.id).map((task) => {
+    return (
+      <Task key={task.id} task={task} />
+    )
+  })
+  
   return (
     <>
       <Wrapper id={task.id}>
@@ -23,9 +32,10 @@ export const Task: VFC<Props> = ({ task }) => {
           </FlexItem>
         </FlexContainer>
       </Wrapper>
+      {childrenTSX}
     </>
   )
-}
+})
 
 const Wrapper = styled.div`
   margin: 0.5rem;

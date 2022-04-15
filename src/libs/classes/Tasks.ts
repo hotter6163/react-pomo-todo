@@ -9,11 +9,23 @@ export class Tasks {
   constructor() {
     this.tasks = [
       {
-        id: uuid(),
+        id: '1',
         name: 'hoge',
         runTime: 0,
         parent: undefined
-      }
+      },
+      {
+        id: '2',
+        name: 'hoge2',
+        runTime: 0,
+        parent: '1'
+      },
+      {
+        id: '3',
+        name: 'hoge3',
+        runTime: 1.3 * 3600,
+        parent: undefined
+      },
     ]
   }
   
@@ -24,6 +36,18 @@ export class Tasks {
         value: task.id,
         title: task.name,
       }
+    })
+  }
+  
+  parents(): TaskType[] {
+    return this.tasks.filter((task) => {
+      return typeof task.parent === 'undefined'
+    })
+  }
+  
+  children(parentId: string): TaskType[] {
+    return this.tasks.filter((task) => {
+      return task.parent === parentId
     })
   }
 }

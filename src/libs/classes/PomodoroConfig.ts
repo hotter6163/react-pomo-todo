@@ -2,9 +2,9 @@ import { PomodoroStatusType, PomodoroTimeType} from 'libs/types/pomodoroTimerTyp
 
 export class PomodoroConfig {
   private readonly pomodoroTime: PomodoroTimeType = {
-    motion: 25 * 60,
-    rest: 5 * 60,
-    longRest: 15 * 60
+    motion: 5,
+    rest: 1,
+    longRest: 3 
   }
   private readonly cycleNum: number = 4
   private count: number
