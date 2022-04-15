@@ -2,6 +2,7 @@ import { ReactNode, ChangeEvent } from 'react'
 
 import { JustifyContentType, AlineType, TextAlignType } from 'libs/types/cssValueTypes'
 import { NamedColorType, BasicColorType, SizeType } from 'libs/types/commonTypes'
+import { SelectItem } from './commonTypes'
 
 export type StyledPProps = {
   color?: BasicColorType
@@ -45,6 +46,6 @@ export type FlexItemProps = Omit<StyledDivProps, 'height'> & {
 export type SelectBoxProps = {
   handleValue: any
   handleMethod: (e: ChangeEvent<HTMLSelectElement>) => void
-  selectItems: { id: string, value: string}[]
+  selectItems: SelectItem[]
   width?: string
 }

@@ -1,4 +1,4 @@
-import React, { VFC, useState, ChangeEvent } from 'react'
+import React, { VFC, useContext, ChangeEvent } from 'react'
 import styled from 'styled-components'
 
 import { StyledDiv } from "components/styeled_components/StyledDiv"
@@ -7,31 +7,26 @@ import { SelectBox } from 'components/commons/index'
 import { PomodoroTimer } from './PomodoroTimer/index'
 import { PomodoroTimerProvider } from 'components/providers/index'
 
-const selectItems = [
-  {id: "none", value: "--------"},
-  {id: "1", value: "ネズミ"},
-  {id: "2", value: "牛"},
-  {id: "3", value: "トラ"},
-  {id: "4", value: "うさぎ"},
-]
+import { SelectTaskContext, TodoListMethodsContext, TasksContext } from 'components/providers/index'
 
-
-export const TimerZone: VFC = () => {
-  const [selected, setSelected] = useState<string>(selectItems[1].value)
+export const TimerZone: VFC = React.memo(() => {
+  const tasks = useContext(TasksContext)
+  const selectTask = useContext(SelectTaskContext)
+  const { setSelectTask } = useContext(TodoListMethodsContext)
   
   const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
-    setSelected(e.target.value)
+    setSelectTask(e.target.value)
   }
   
   return (
     <Wrapper textAlign="center">
-      <SelectBox handleValue={selected} handleMethod={handleChange} selectItems={selectItems} width="80%" />
+      <SelectBox handleValue={selectTask} handleMethod={handleChange} selectItems={tasks.selectItems()} width="80%" />
       <PomodoroTimerProvider>
         <PomodoroTimer />
       </PomodoroTimerProvider>
     </Wrapper>
   )
-}
+})
 
 type WrapperProps = Required<Omit<StyledDivProps, 'width' | 'height' | 'backgroundColor'>>
 

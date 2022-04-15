@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-import { SelectTaskType } from 'libs/types/todoListTypes'
+import { EditTaskType } from 'libs/types/todoListTypes'
 
-export const EditTaskContext = createContext<SelectTaskType>(undefined)
+export const EditTaskContext = createContext<EditTaskType>(undefined)

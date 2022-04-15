@@ -1,5 +1,3 @@
 import { createContext } from 'react'
 
-import { SelectTaskType } from 'libs/types/todoListTypes'
-
-export const SelectTaskContext = createContext<SelectTaskType>(undefined)
+export const SelectTaskContext = createContext<string>('')

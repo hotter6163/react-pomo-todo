@@ -8,10 +8,10 @@ export type TaskType = {
   parent: string | undefined
 }
 
-export type SelectTaskType = string | undefined
+export type EditTaskType = string | undefined
 
 export type SetMethodsType = {
-  setEditTask: SetValueType<SelectTaskType>
-  setSelectTask: SetValueType<SelectTaskType>
+  setEditTask: SetValueType<EditTaskType>
+  setSelectTask: SetValueType<string>
   setTasks: SetValueType<Tasks>
 }

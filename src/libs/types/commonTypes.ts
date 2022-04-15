@@ -13,3 +13,9 @@ export type SizeValueType = {
 }
 
 export type SetValueType<T> = React.Dispatch<React.SetStateAction<T>>
+
+export type SelectItem = {
+  id: string
+  value: string
+  title: string
+}
