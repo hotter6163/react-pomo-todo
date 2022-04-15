@@ -1,7 +1,7 @@
 import React, { VFC, useContext } from 'react'
 import styled from 'styled-components'
 
-import { Task } from './Task'
+import { Task } from './Task/index'
 import { TasksContext } from 'components/providers/index'
 
 export const TodoList: VFC = () => {
