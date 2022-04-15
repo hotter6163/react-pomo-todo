@@ -3,4 +3,8 @@ export { PomodoroTimerProvider, SetMethodsContext } from './PomodoroTimerProvide
 export { TimeContext } from './PomodoroTimerProvider/TimeContext'
 export { PomodoroConfigContext } from './PomodoroTimerProvider/PomodoroConfigContext'
 export { TimerStatusContext } from './PomodoroTimerProvider/TimerStatusContext'
-export { TasksContext, TasksProvider } from './TodoListProvider'
+export { TodoListMethodsContext, TodoListProvider } from './TodoListProvider'
+
+export { EditTaskContext } from './TodoListProvider/EditTaskContext'
+export { SelectTaskContext } from './TodoListProvider/SelectTaskContext'
+export { TasksContext } from './TodoListProvider/TasksContext'

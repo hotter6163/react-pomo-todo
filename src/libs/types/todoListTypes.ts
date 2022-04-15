@@ -8,7 +8,10 @@ export type TaskType = {
   parent: string | undefined
 }
 
-export type TasksContextType = {
-  tasks: Tasks
+export type SelectTaskType = string | undefined
+
+export type SetMethodsType = {
+  setEditTask: SetValueType<SelectTaskType>
+  setSelectTask: SetValueType<SelectTaskType>
   setTasks: SetValueType<Tasks>
 }

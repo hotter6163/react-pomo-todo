@@ -3,11 +3,11 @@ import React, { VFC } from 'react'
 import { FlexContainer, FlexItem } from 'components/commons/index'
 import { TimerZone } from "./TimerZone/index"
 import { TodoList } from './TodoList/index'
-import { TasksProvider } from 'components/providers/index'
+import { TodoListProvider } from 'components/providers/index'
 
 export const Home: VFC = () => {
   return (
-    <TasksProvider>
+    <TodoListProvider>
       <FlexContainer>
         <FlexItem width="30%" alignSelf="center">
           <TimerZone />
@@ -16,6 +16,6 @@ export const Home: VFC = () => {
           <TodoList />
         </FlexItem>
       </FlexContainer>
-    </TasksProvider>
+    </TodoListProvider>
   )
 }
