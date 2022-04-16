@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components'
 import { ButtonProps } from 'libs/types/componentTypes'
 import { color, fontSize } from 'libs/constants/index'
 
-export const ButtonMiddle: VFC<ButtonProps> = ({ color, children, onClick, block=false }) => {
+export const ButtonMiddle: VFC<ButtonProps> = ({ color, children, onClick, block=false, disabled=false }) => {
   return (
-    <Wrapper color={color} block={block} onClick={onClick}>
+    <Wrapper color={color} block={block} onClick={onClick} disabled={disabled}>
       {children}
     </Wrapper>
   )
@@ -21,7 +21,7 @@ const Wrapper = styled.button<Omit<ButtonProps, 'children' | 'onClick'>>`
   ${props => 
    css`
     background-color: ${color[props.color]};
-    border: 1px ${props.color === 'normal' ? color.black :color[props.color]} solid;
+    border: 1px ${props.color === 'normal' ? color.black : color[props.color]} solid;
     ${props.color !== "normal" && css`color: ${color.white};`}
     ${props.block && css`
       display: block;

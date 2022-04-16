@@ -1,11 +1,11 @@
 import React, { VFC, useContext } from 'react'
-import styled from 'styled-components'
 
-import { TaskType } from 'libs/types/todoListTypes'
+import { TaskType, ActionType } from 'libs/types/todoListTypes'
 import { Text, FlexContainer, FlexItem } from 'components/commons/index'
-import { color } from 'libs/constants/index'
 import { Control } from './Control'
-import { TasksContext } from 'components/providers/index'
+import { TasksContext, EditTaskContext } from 'components/providers/index'
+import { TaskBox } from './TaskBox'
+import { EditTaskForm } from './EditTaskForm'
 
 type Props = {
   task: TaskType
@@ -13,6 +13,7 @@ type Props = {
 
 export const Task: VFC<Props> = React.memo(({ task }) => {
   const tasks = useContext(TasksContext)
+  const editTask = useContext(EditTaskContext)
   
   const childrenTSX = tasks.children(task.id).map((task) => {
     return (
@@ -20,27 +21,39 @@ export const Task: VFC<Props> = React.memo(({ task }) => {
     )
   })
   
+  let showForm: ActionType | undefined
+  if (task.id === editTask?.target) {
+    showForm = editTask.action
+  }
+  
   return (
     <>
-      <Wrapper id={task.id}>
-        <FlexContainer justifyContent="flex-end">
-          <FlexItem width={!task.parent ? '50%' : '45%'} alignSelf="center">
-            <Text fontSize='m'>{task.name}</Text>
-          </FlexItem>
-          <FlexItem width="50%" alignSelf="center">
-            <Control task={task} />
-          </FlexItem>
-        </FlexContainer>
-      </Wrapper>
+      <TaskBox id={task.id}>
+        {(() => {
+          if (showForm !== 'edit') {
+            return (
+              <FlexContainer justifyContent="flex-end">
+                <FlexItem width={!task.parent ? '50%' : '47%'} alignSelf="center">
+                  <Text fontSize='m'>{task.value}</Text>
+                </FlexItem>
+                <FlexItem width="50%" alignSelf="center">
+                  <Control task={task} />
+                </FlexItem>
+              </FlexContainer>
+            )
+          } else {
+            return (
+              <EditTaskForm action="edit" target={task.id} isChild={!!task.parent} beforeValue={task.value} />
+            )
+          }
+        })()}
+      </TaskBox>
       {childrenTSX}
+      {showForm === 'add' && (
+        <TaskBox>
+          <EditTaskForm action="add" target={task.id} isChild={true} />
+        </TaskBox>
+      )}
     </>
   )
 })
-
-const Wrapper = styled.div`
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-bottom-width: 1px;
-  border-bottom-color: ${color.gray};
-  border-bottom-style: solid;
-`

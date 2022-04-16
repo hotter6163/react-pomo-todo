@@ -11,6 +11,11 @@ export type StyledPProps = {
   inline?: boolean
 }
 
+export type StyledInputProps = {
+  fontSize?: SizeType
+  width?: string
+}
+
 export type StyledDivProps = {
   width?: string
   height?: string
@@ -23,6 +28,7 @@ export type ButtonProps = {
   color: NamedColorType
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined) => void
   block?: boolean
+  disabled?: boolean
 }
 
 export type TextProps = {

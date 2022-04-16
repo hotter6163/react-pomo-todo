@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components'
 import { ButtonProps } from 'libs/types/componentTypes'
 import { color, fontSize } from 'libs/constants/index'
 
-export const ButtonSmall: VFC<ButtonProps> = ({ color, children, onClick, block=false }) => {
+export const ButtonSmall: VFC<ButtonProps> = ({ color, children, onClick, block=false, disabled=false }) => {
   return (
-    <Wrapper color={color} block={block} onClick={onClick}>
+    <Wrapper color={color} block={block} onClick={onClick} disabled={disabled}>
       {children}
     </Wrapper>
   )
