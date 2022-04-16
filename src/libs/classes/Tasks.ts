@@ -104,5 +104,9 @@ export class Tasks {
     this.tasks.splice(index, 1)
     this.children(id).forEach((task) => this.deleteTask(task.id))
   }
+  
+  haveTask(): boolean {
+    return this.tasks.length !== 0
+  }
 }
 

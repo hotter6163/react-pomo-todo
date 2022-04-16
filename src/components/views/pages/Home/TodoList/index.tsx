@@ -6,6 +6,7 @@ import { Task } from './Task/index'
 import { TaskBox } from './Task/TaskBox'
 import { TasksContext, EditTaskContext } from 'components/providers/index'
 import { EditTaskForm } from './Task/EditTaskForm'
+import { AddFormButton } from './AddFormButton'
 
 export const TodoList: VFC = () => {
   const tasks = useContext(TasksContext)
@@ -26,11 +27,19 @@ export const TodoList: VFC = () => {
     <Wrapper>
       <ListArea>
         {tasksTSX}
-        {showForm === 'add' && (
-          <TaskBox>
-            <EditTaskForm action="add" target="master" />
-          </TaskBox>
-        )}
+        <TaskBox removeBorderBottom={true}>
+          {(() => {
+            if (showForm === 'add' || !tasks.haveTask()) {
+              return (
+                <EditTaskForm action="add" target="master" /> 
+              )
+            } else {
+              return (
+                <AddFormButton />
+              )
+            }
+          })()}
+        </TaskBox>
       </ListArea>
     </Wrapper>
   )
