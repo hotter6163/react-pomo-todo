@@ -1,31 +1,37 @@
-import { v4 as uuid } from 'uuid'
+import { v4 as uuid, validate } from 'uuid'
 
 import { TaskType, ActionType } from 'libs/types/todoListTypes'
 import { SelectItem } from 'libs/types/commonTypes'
+import { getStorage, removeStorage } from 'libs/functions/storageIO/localStorage'
+import { tasksStorageKey } from 'libs/constants/constant'
 
 export class Tasks {
   tasks: TaskType[]
   
   constructor() {
+    const id = uuid()
     this.tasks = [
       {
-        id: '1',
-        value: 'hoge',
+        id: id,
+        value: 'hogehoge',
         runTime: 0,
         parent: undefined
-      },
-      {
-        id: '2',
-        value: 'hoge2',
+      }, {
+        id: uuid(),
+        value: 'hogehogehoge',
         runTime: 0,
-        parent: '1'
-      },
-      {
-        id: '3',
-        value: 'hoge3',
-        runTime: 1.3 * 3600,
+        parent: id
+      }, {
+        id: uuid(),
+        value: 'foobar',
+        runTime: 0,
         parent: undefined
-      },
+      }, {
+        id: uuid(),
+        value: 'var',
+        runTime: 0,
+        parent: undefined
+      }
     ]
   }
   
@@ -108,5 +114,30 @@ export class Tasks {
   haveTask(): boolean {
     return this.tasks.length !== 0
   }
+  
+  getStoredTasks(): TaskType[] {
+    const jsonString = getStorage(tasksStorageKey)
+    try {
+      const storedTasks = JSON.parse(jsonString)
+      assertIsTaskTypes(storedTasks)
+      return storedTasks
+    } catch {
+      removeStorage(tasksStorageKey)
+      return []
+    }
+  }
 }
 
+function assertIsTaskTypes(value: any): asserts value is TaskType[] {
+  if (!Array.isArray(value) || !value.every((item) => {
+    if (!item) return false
+    if (!validate(item.id)) return false
+    if (!item.value) return false
+    if (!item.runTime) return false
+    if (!!item.parent && !validate(item.parent)) return false
+
+    return true
+  })) {
+    throw new Error('引数「value」は TaskType[] 型と一致しません。')
+  }
+}

@@ -1,4 +1,4 @@
-import React, { VFC, useContext } from 'react'
+import React, { VFC, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { ActionType } from 'libs/types/todoListTypes'
@@ -7,6 +7,8 @@ import { TaskBox } from './Task/TaskBox'
 import { TasksContext, EditTaskContext } from 'components/providers/index'
 import { EditTaskForm } from './Task/EditTaskForm'
 import { AddFormButton } from './AddFormButton'
+import { saveStorage } from 'libs/functions/storageIO/localStorage'
+import { tasksStorageKey } from 'libs/constants/constant'
 
 export const TodoList: VFC = () => {
   const tasks = useContext(TasksContext)
@@ -22,6 +24,10 @@ export const TodoList: VFC = () => {
   if (editTask?.target === "master") {
     showForm = editTask.action
   }
+  
+  useEffect(() => {
+    saveStorage(tasksStorageKey, tasks.tasks)
+  }, [tasks])
   
   return (
     <Wrapper>

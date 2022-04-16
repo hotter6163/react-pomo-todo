@@ -1,4 +1,4 @@
-import React, { VFC, useContext, useState, ChangeEvent } from 'react'
+import React, { VFC, useContext, useState, ChangeEvent, useRef, useEffect } from 'react'
 
 import { FlexContainer, FlexItem, ButtonSmall } from 'components/commons/index'
 import { StyledInput } from 'components/styeled_components/StyledInput'
@@ -39,12 +39,19 @@ export const EditTaskForm: VFC<Props> = React.memo(({ action, beforeValue, isChi
     setEditTask(undefined)
   }
   
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  
+  useEffect(() => {
+    if (!inputRef.current) return 
+    inputRef.current.focus()
+  }, [])
+  
   return (
     <FlexContainer justifyContent="flex-end">
       <FlexItem width={flexItemSize.form}>
         <FlexContainer>
           <FlexItem width={flexItemSize.input} alignSelf="center">
-            <StyledInput fontSize="s" value={inputValue} onChange={handleChange} />
+            <StyledInput ref={inputRef} fontSize="s" value={inputValue} onChange={handleChange} />
           </FlexItem>
           <FlexItem width={flexItemSize.buttons} textAlign="center">
             <ButtonSmall color="primary" onClick={editAction} disabled={inputValue === ''}>{actionText[action]}</ButtonSmall>
