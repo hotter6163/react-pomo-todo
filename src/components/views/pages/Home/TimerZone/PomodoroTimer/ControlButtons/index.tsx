@@ -2,8 +2,9 @@ import React, { VFC, useContext, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { StyledDiv } from 'components/styeled_components/StyledDiv'
-import { TimerStatusContext, SetMethodsContext, TimeContext, PomodoroConfigContext } from 'components/providers/index'
+import { TimerStatusContext, TodoListMethodsContext, SetMethodsContext, TimeContext, PomodoroConfigContext, TasksContext, SelectTaskContext } from 'components/providers/index'
 import { PomodoroConfig } from 'libs/classes/PomodoroConfig' 
+import { Tasks } from 'libs/classes/Tasks' 
 
 import { ExecutableButtons } from './ExecutableButtons'
 import { ExecutionButtons } from './ExecutionButtons'
@@ -14,6 +15,9 @@ export const ControlButtons: VFC = React.memo(() => {
   const timerStatus = useContext(TimerStatusContext)
   const time = useContext(TimeContext)
   const pomodoroConfig = useContext(PomodoroConfigContext)
+  const tasks = useContext(TasksContext)
+  const selectTask = useContext(SelectTaskContext)
+  const { setTasks } = useContext(TodoListMethodsContext)
   
   const timeoutIdRef = useRef<number | undefined>(undefined)
   const intervalIdRef = useRef<number | undefined>(undefined)
@@ -33,9 +37,17 @@ export const ControlButtons: VFC = React.memo(() => {
     const timeoutId = window.setTimeout(() => {
       timerStop()
       setTime((prev) => prev - 1)
+      
       const cloneConfig = Object.assign(new PomodoroConfig(), pomodoroConfig)
       cloneConfig.addCount()
       setPomodoroConfig(cloneConfig)
+      
+      if (selectTask) {
+        const tasksClone = Object.assign(new Tasks(), tasks)
+        tasksClone.addRunTime(selectTask, pomodoroConfig.pomodoroTime.motion)
+        setTasks(tasksClone)
+      }
+      
       setTimerStatus('executable')
     }, time * 1000)
     const intervalId = window.setInterval(() => {
@@ -59,6 +71,12 @@ export const ControlButtons: VFC = React.memo(() => {
     const cloneConfig = Object.assign(new PomodoroConfig(), pomodoroConfig)
     if (pomodoroConfig.nowStatus() === 'motion') {
       cloneConfig.reset()
+      
+      if (selectTask) {
+        const tasksClone = Object.assign(new Tasks(), tasks)
+        tasksClone.addRunTime(selectTask, pomodoroConfig.pomodoroTime.motion - time)
+        setTasks(tasksClone)
+      }
     } else {
       cloneConfig.addCount()
     }

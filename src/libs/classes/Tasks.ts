@@ -9,30 +9,7 @@ export class Tasks {
   tasks: TaskType[]
   
   constructor() {
-    const id = uuid()
-    this.tasks = [
-      {
-        id: id,
-        value: 'hogehoge',
-        runTime: 0,
-        parent: undefined
-      }, {
-        id: uuid(),
-        value: 'hogehogehoge',
-        runTime: 0,
-        parent: id
-      }, {
-        id: uuid(),
-        value: 'foobar',
-        runTime: 0,
-        parent: undefined
-      }, {
-        id: uuid(),
-        value: 'var',
-        runTime: 0,
-        parent: undefined
-      }
-    ]
+    this.tasks = this.getStoredTasks()
   }
   
   selectItems(): SelectItem[] {
@@ -125,6 +102,13 @@ export class Tasks {
       removeStorage(tasksStorageKey)
       return []
     }
+  }
+  
+  addRunTime(id: string, sec: number): void {
+    const index = this.findIndex(id)
+    console.log(index)
+    if (typeof index === 'undefined') return
+    this.tasks[index].runTime += sec
   }
 }
 

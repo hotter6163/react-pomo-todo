@@ -4,6 +4,7 @@ import { TaskType } from 'libs/types/todoListTypes'
 import { Text, FlexContainer, FlexItem, ButtonSmall } from 'components/commons/index'
 import { TodoListMethodsContext, TasksContext } from 'components/providers/index'
 import { Tasks } from 'libs/classes/Tasks'
+import { round } from 'libs/functions/calculation'
 
 type Props = {
   task: TaskType
@@ -37,7 +38,7 @@ export const Control: VFC<Props> = ({ task }) => {
   return (
     <FlexContainer>
       <FlexItem width="30%" alignSelf="center">
-        <Text fontSize="m" textAlign="center">{task.runTime / 3600}時間</Text>
+        <Text fontSize="m" textAlign="center">{round(task.runTime / 3600, -1)}時間</Text>
       </FlexItem>
       <FlexItem width="70%" alignSelf="center" textAlign="center">
         {!task.parent && <ButtonSmall color="normal" onClick={addAction}>Add Sub</ButtonSmall>}
