@@ -117,7 +117,7 @@ function assertIsTaskTypes(value: any): asserts value is TaskType[] {
     if (!item) return false
     if (!validate(item.id)) return false
     if (!item.value) return false
-    if (!item.runTime) return false
+    if (typeof item.runTime !== 'number') return false
     if (!!item.parent && !validate(item.parent)) return false
 
     return true
