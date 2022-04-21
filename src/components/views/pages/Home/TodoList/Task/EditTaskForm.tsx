@@ -30,7 +30,7 @@ export const EditTaskForm: VFC<Props> = React.memo(({ action, beforeValue, isChi
   
   const editAction = () => {
     const cloneTasks = Object.assign(new Tasks(), tasks)
-    cloneTasks.editTasks(action, target, inputValue)
+    cloneTasks.updateTasks(action, target, inputValue)
     setTasks(cloneTasks)
     setEditTask(undefined)
   }

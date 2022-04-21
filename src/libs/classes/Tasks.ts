@@ -46,7 +46,7 @@ export class Tasks {
     })
   }
   
-  editTasks(action: ActionType, target: string, value: string): void {
+  updateTasks(action: ActionType, target: string, value: string): void {
     switch (action) {
       case 'add':
         this.addTask(target, value)
